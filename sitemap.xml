@@ -3,15 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
+    <loc>https://FlomeWorld.github.io/</loc>
+    <lastmod>2020-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://FlomeWorld.github.io/en/</loc>
+    <lastmod>2020-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://FlomeWorld.github.io/en/post/k8s/schduler/src-struct/</loc>
+    <lastmod>2020-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://FlomeWorld.github.io/en/about/</loc>
+    <lastmod>2020-05-08T20:24:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://FlomeWorld.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://FlomeWorld.github.io/tags/</loc>
   </url>
   
 </urlset>
