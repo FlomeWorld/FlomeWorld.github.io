@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Be Brave</title>
-    <link>https://FlomeWorld.github.io/post/</link>
-    <description>Recent content in Posts on Be Brave</description>
+    <title>design on Be Brave</title>
+    <link>https://FlomeWorld.github.io/tags/design/</link>
+    <description>Recent content in design on Be Brave</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://FlomeWorld.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://FlomeWorld.github.io/tags/design/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://FlomeWorld.github.io/post/design/software-design/</guid>
       <description>The mind map show the design process from my point of view </description>
-    </item>
-    
-    <item>
-      <title>Scheduler</title>
-      <link>https://FlomeWorld.github.io/post/k8s/scheduler/</link>
-      <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://FlomeWorld.github.io/post/k8s/scheduler/</guid>
-      <description></description>
     </item>
     
   </channel>

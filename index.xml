@@ -12,11 +12,20 @@
     
     
     <item>
-      <title>Src Struct</title>
-      <link>https://FlomeWorld.github.io/post/k8s/schduler/src-struct/</link>
+      <title>Software Design</title>
+      <link>https://FlomeWorld.github.io/post/design/software-design/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://FlomeWorld.github.io/post/design/software-design/</guid>
+      <description>The mind map show the design process from my point of view </description>
+    </item>
+    
+    <item>
+      <title>Scheduler</title>
+      <link>https://FlomeWorld.github.io/post/k8s/scheduler/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://FlomeWorld.github.io/post/k8s/schduler/src-struct/</guid>
+      <guid>https://FlomeWorld.github.io/post/k8s/scheduler/</guid>
       <description></description>
     </item>
     
