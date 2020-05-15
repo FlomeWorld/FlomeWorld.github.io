@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Scheduler</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://FlomeWorld.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.70.0" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Scheduler</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="flomeworld@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/FlomeWorld/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/username/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/username/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/username/"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Scheduler</h2>
+        <h5>May 9, 2020</h5>
+        
+<a href="https://FlomeWorld.github.iotags/k8s"><kbd class="item-tag">k8s</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><p>kubernetes 调度器</p>
+<p>调度器作为一个独立运行的master节点组件，通过与API server交互来获取新创建的pod资源和每个node信息的变化，以此来为新的pod选择一个最优秀的节点进行部署。</p>
+<h2 id="代码结构">代码结构</h2>
+<p>代码框架可以分为三层:初始化配置，架构，算法</p>
+<h3 id="初始化配置">初始化配置</h3>
+<p>程序入口</p>
+<ul>
+<li>cmd/kube-scheduler/scheduler.go为程序的入口，和其他组件一样依赖&quot;github.com/spf13/pflag&quot;来实现参数的配置和程序的执行</li>
+</ul>
+<p>核心代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang">
+<span style="color:#75715e">// Run executes the scheduler based on the given configuration. It only returns on error or when context is done.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">cc</span> <span style="color:#a6e22e">schedulerserverconfig</span>.<span style="color:#a6e22e">CompletedConfig</span>, <span style="color:#a6e22e">outOfTreeRegistryOptions</span> <span style="color:#f92672">...</span><span style="color:#a6e22e">Option</span>) <span style="color:#66d9ef">error</span> {
+    <span style="color:#f92672">......</span>
+
+    <span style="color:#75715e">// 外部插件注册
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">outOfTreeRegistry</span> <span style="color:#f92672">:=</span> make(<span style="color:#a6e22e">framework</span>.<span style="color:#a6e22e">Registry</span>)
+        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">option</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">outOfTreeRegistryOptions</span> {
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">option</span>(<span style="color:#a6e22e">outOfTreeRegistry</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+                }
+    }
+
+    <span style="color:#f92672">......</span>
+
+        <span style="color:#75715e">// 创建scheduler实例
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">sched</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">scheduler</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">Client</span>,
+                <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">InformerFactory</span>,
+                <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">PodInformer</span>,
+                <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">Recorder</span>,
+        <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>(),
+    <span style="color:#f92672">......</span>
+
+        <span style="color:#75715e">// 准备事件广播器
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">Broadcaster</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">EventClient</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">Broadcaster</span>.<span style="color:#a6e22e">StartRecordingToSink</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>())
+        }
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">CoreBroadcaster</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">CoreEventClient</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">CoreBroadcaster</span>.<span style="color:#a6e22e">StartRecordingToSink</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">corev1</span>.<span style="color:#a6e22e">EventSinkImpl</span>{<span style="color:#a6e22e">Interface</span>: <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">CoreEventClient</span>.<span style="color:#a6e22e">Events</span>(<span style="color:#e6db74">&#34;&#34;</span>)})
+        }
+    <span style="color:#75715e">// 启动健康检查以及监控指标服务
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">InsecureServing</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                <span style="color:#a6e22e">separateMetrics</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">InsecureMetricsServing</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>
+                <span style="color:#a6e22e">handler</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">buildHandlerChain</span>(<span style="color:#a6e22e">newHealthzHandler</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">ComponentConfig</span>, <span style="color:#a6e22e">separateMetrics</span>, <span style="color:#a6e22e">checks</span><span style="color:#f92672">...</span>), <span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>)
+                <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">InsecureServing</span>.<span style="color:#a6e22e">Serve</span>(<span style="color:#a6e22e">handler</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>()); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;failed to start healthz server: %v&#34;</span>, <span style="color:#a6e22e">err</span>)
+                }
+    }
+        <span style="color:#f92672">......</span>
+
+        <span style="color:#75715e">// 启动informer来watch pod以及其他资源的状况
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">PodInformer</span>.<span style="color:#a6e22e">Informer</span>().<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>())
+        <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">InformerFactory</span>.<span style="color:#a6e22e">Start</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>())
+
+        <span style="color:#75715e">// Wait for all caches to sync before scheduling.
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">InformerFactory</span>.<span style="color:#a6e22e">WaitForCacheSync</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>())
+
+        <span style="color:#75715e">// 开启选举机制
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">LeaderElection</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+                <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">LeaderElection</span>.<span style="color:#a6e22e">Callbacks</span> = <span style="color:#a6e22e">leaderelection</span>.<span style="color:#a6e22e">LeaderCallbacks</span>{
+                        <span style="color:#a6e22e">OnStartedLeading</span>: <span style="color:#a6e22e">sched</span>.<span style="color:#a6e22e">Run</span>,
+                        <span style="color:#a6e22e">OnStoppedLeading</span>: <span style="color:#66d9ef">func</span>() {
+                                <span style="color:#a6e22e">klog</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;leaderelection lost&#34;</span>)
+            },
+        <span style="color:#f92672">......</span>.
+
+        <span style="color:#75715e">// 执行调度架构
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">sched</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">ctx</span>)
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;finished without leader elect&#34;</span>)
+}
+
+</code></pre></div><p>总结</p>
+<ul>
+<li>通过option的方式配置基础选项</li>
+<li>使用out of tree的方式添加插件和扩展资源类型</li>
+</ul>
+<h3 id="调度架构framework">调度架构（framework）</h3>
+<p>1 调度架构负责提供pod、node等信息以及获取资源所需的client等信息，
+2 pulgin对象的通过实现相应pugin接口来实现自己的能力，plugin可以分为以下类型：</p>
+<ul>
+<li>QueueSortPlugin</li>
+<li>PreFilterPlugin</li>
+<li>FilterPlugin</li>
+<li>PostFilterPlugin</li>
+<li>ScorePlugin</li>
+<li>PreBindPlugin</li>
+<li>BindPlugin</li>
+<li>PostBindPlugin</li>
+<li>PermitPlugin</li>
+</ul>
+<p>framework会按照顺序去执行相应类型的plugin</p>
+<p>架构初始化流程图：
+<img src="./framework.svg" alt="framework"></p>
+<ul>
+<li>framework 初始化过程重点在于plugin加载，plugin里会对应相应的预选算法和优选算法</li>
+</ul>
+<h4 id="cache">cache</h4>
+<ul>
+<li>pkg/scheduler/internal/cache/cache.go，存储pod和node的信息,已经找到最有node的pod会在cache里更新，从而继续执行调度，pod启动一个新的协程进行bind</li>
+</ul>
+<h4 id="queue">queue</h4>
+<ul>
+<li>queue用来缓存正在调度的pod信息</li>
+</ul>
+<h4 id="event">event</h4>
+<ul>
+<li>用来事件通知</li>
+</ul>
+<h3 id="调度">调度</h3>
+<ul>
+<li>调度设计为每次调度一个pod，其他pod排队</li>
+</ul>
+<h4 id="调度执行流程">调度执行流程</h4>
+<pre><code class="language-null" data-lang="null">    +---------------------------------------------+
+    |               Schedulable nodes:            |
+    |                                             |
+    | +--------+    +--------+      +--------+    |
+    | | node 1 |    | node 2 |      | node 3 |    |
+    | +--------+    +--------+      +--------+    |
+    |                                             |
+    +-------------------+-------------------------+
+                        |
+                        |
+                        v
+    +-------------------+-------------------------+
+
+    Pred. filters: node 3 doesn't have enough resource
+
+    +-------------------+-------------------------+
+                        |
+                        |
+                        v
+    +-------------------+-------------------------+
+    |             remaining nodes:                |
+    |   +--------+                 +--------+     |
+    |   | node 1 |                 | node 2 |     |
+    |   +--------+                 +--------+     |
+    |                                             |
+    +-------------------+-------------------------+
+                        |
+                        |
+                        v
+    +-------------------+-------------------------+
+
+    Priority function:    node 1: p=2
+                          node 2: p=5
+
+    +-------------------+-------------------------+
+                        |
+                        |
+                        v
+            select max{node priority} = node 2
+</code></pre><p>架构初始化流程图：
+<img src="./schedulerOne.svg" alt="scheduler"></p>
+<h2 id="调度算法分析">调度算法分析</h2>
+<h2 id="调度器扩展">调度器扩展</h2>
+</div>
+
+    
+    
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Frankie" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

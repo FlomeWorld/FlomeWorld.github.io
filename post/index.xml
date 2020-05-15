@@ -22,11 +22,16 @@
     
     <item>
       <title>Scheduler</title>
-      <link>https://FlomeWorld.github.io/post/k8s/scheduler/</link>
+      <link>https://FlomeWorld.github.io/post/k8s/scheduler/scheduler/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://FlomeWorld.github.io/post/k8s/scheduler/</guid>
-      <description></description>
+      <guid>https://FlomeWorld.github.io/post/k8s/scheduler/scheduler/</guid>
+      <description>kubernetes 调度器
+调度器作为一个独立运行的master节点组件，通过与API server交互来获取新创建的pod资源和每个node信息的变化，以此来为新的pod选择一个最优秀的节点进行部署。
+代码结构 代码框架可以分为三层:初始化配置，架构，算法
+初始化配置 程序入口
+ cmd/kube-scheduler/scheduler.go为程序的入口，和其他组件一样依赖&amp;quot;github.com/spf13/pflag&amp;quot;来实现参数的配置和程序的执行  核心代码：
+// Run executes the scheduler based on the given configuration. It only returns on error or when context is done. func Run(ctx context.Context, cc schedulerserverconfig.CompletedConfig, outOfTreeRegistryOptions ...Option) error { ...... // 外部插件注册  outOfTreeRegistry := make(framework.Registry) for _, option := range outOfTreeRegistryOptions { if err := option(outOfTreeRegistry); err != nil { return err } } ...... // 创建scheduler实例  sched, err := scheduler.</description>
     </item>
     
   </channel>
