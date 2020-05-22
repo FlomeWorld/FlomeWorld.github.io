@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Garbage Collection</title>
+      <link>https://FlomeWorld.github.io/post/k8s/gc/garbage-collection/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://FlomeWorld.github.io/post/k8s/gc/garbage-collection/</guid>
+      <description>Garbage Collection instruction: https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
+mindmap e.g I use the steps bellow to explation principle of gc
+1. create the deployment apiVersion: apps/v1 kind: Deployment metadata: name: nginx-deployment labels: app: nginx spec: replicas: 3 selector: matchLabels: app: nginx template: metadata: labels: app: nginx spec: containers: - name: nginx image: nginx:1.14.2 ports: - containerPort: 80 2. delete the rs  prepare : I stop the kubelet so the pod belong to rs will be not deleted delete the resource with the propagationPloicy equel to &amp;lsquo;Foreground&amp;rsquo;  curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments/nginx-deployment -d &amp;#39;{&amp;#34;kind&amp;#34;:&amp;#34;DeleteOptions&amp;#34;,&amp;#34;apiVersion&amp;#34;:&amp;#34;v1&amp;#34;,&amp;#34;propagationPolicy&amp;#34;:&amp;#34;Orphan&amp;#34;}&amp;#39; -H &amp;#34;Content-Type: application/json&amp;#34;  the result:  (base) frankie@frankie-XPS-15-9550:~/Documents/test$kubectl get pod NAME READY STATUS RESTARTS AGE nginx-deployment-57d9684bf8-bnx88 1/1 Running 0 35m nginx-deployment-57d9684bf8-nxnr6 1/1 Running 0 35m nginx-deployment-57d9684bf8-q4zj2 1/1 Running 0 35m (base) frankie@frankie-XPS-15-9550:~/Documents/test$ kubectl get rs NAME DESIRED CURRENT READY AGE nginx-deployment-57d9684bf8 3 3 3 2m40s (base) frankie@frankie-XPS-15-9550:~/Documents/test$ kubectl get deploy No resources found.</description>
+    </item>
+    
+    <item>
       <title>Software Design</title>
       <link>https://FlomeWorld.github.io/post/design/software-design/</link>
       <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
