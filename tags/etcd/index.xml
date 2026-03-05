@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Etcd on Curiosity</title>
+    <link>https://FlomeWorld.github.io/tags/etcd/</link>
+    <description>Recent content in Etcd on Curiosity</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://FlomeWorld.github.io/tags/etcd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Etcd Performance Test</title>
+      <link>https://FlomeWorld.github.io/post/etcd/performance_test/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://FlomeWorld.github.io/post/etcd/performance_test/</guid>
+      <description>&lt;h1 id=&#34;performance&#34;&gt;Performance&lt;/h1&gt;&#xA;&lt;p&gt;instruction&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://etcd.io/docs/v3.4.0/benchmarks/etcd-3-demo-benchmarks/&#34;&gt;https://etcd.io/docs/v3.4.0/benchmarks/etcd-3-demo-benchmarks/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;issues&#34;&gt;issues&lt;/h2&gt;&#xA;&lt;h3 id=&#34;error-info&#34;&gt;error info&lt;/h3&gt;&#xA;&lt;p&gt;etcdserver: mvcc: database space exceeded&lt;/p&gt;&#xA;&lt;h3 id=&#34;solution&#34;&gt;solution&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/etcd-io/etcd/issues/11947&#34;&gt;https://github.com/etcd-io/etcd/issues/11947&lt;/a&gt;&#xA;&lt;a href=&#34;https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/maintenance.md#space-quota&#34;&gt;https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/maintenance.md#space-quota&lt;/a&gt;&#xA;&lt;a href=&#34;https://github.com/etcd-io/etcd/issues/10312&#34;&gt;https://github.com/etcd-io/etcd/issues/10312&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;performance-test&#34;&gt;performance test&lt;/h2&gt;&#xA;&lt;h3 id=&#34;etcd-proxy&#34;&gt;etcd-proxy&lt;/h3&gt;&#xA;&lt;p&gt;with the high pressure test the proxy not take much resource usage, the request can be set like 0.2c,50m limit can be set like 0.3,100m&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

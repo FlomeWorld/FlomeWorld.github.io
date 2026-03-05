@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embodied-Ai on Curiosity</title>
+    <link>https://FlomeWorld.github.io/tags/embodied-ai/</link>
+    <description>Recent content in Embodied-Ai on Curiosity</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://FlomeWorld.github.io/tags/embodied-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Embodied AI Research</title>
+      <link>https://FlomeWorld.github.io/research/embodied-intelligence-project-analysis/</link>
+      <pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://FlomeWorld.github.io/research/embodied-intelligence-project-analysis/</guid>
+      <description>&lt;h1 id=&#34;architectural-frontiers-in-open-source-embodied-intelligence-a-2026-comprehensive-analysis-of-vision-language-action-systems&#34;&gt;&lt;strong&gt;Architectural Frontiers in Open-Source Embodied Intelligence: A 2026 Comprehensive Analysis of Vision-Language-Action Systems&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;The evolution of embodied intelligence has reached a critical juncture in early 2026, transitioning from experimental research curiosities to vertically integrated, general-purpose foundation models capable of sophisticated cross-embodiment generalization. This shift is characterized by the dominance of Vision-Language-Action (VLA) architectures, which unify perception, linguistic reasoning, and motor control into single neural pipelines.1 The landscape of open-source robotics has expanded significantly, providing researchers and industrial practitioners with access to models that not only interpret the physical world through a multimodal lens but also execute complex, contact-rich manipulation tasks with unprecedented dexterity.1 Central to the progress observed by February 2026 is the democratization of high-quality training data and the refinement of action-decoding mechanisms. While early models relied heavily on discretized action tokens, current state-of-the-art (SOTA) projects increasingly employ continuous action spaces, flow-matching, and diffusion-based policies to achieve the high-frequency control necessitated by real-world interaction.5&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

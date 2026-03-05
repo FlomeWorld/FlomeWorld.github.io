@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <script>
+    (function() {
+        
+        
+        const autoTheme = false;
+        if (autoTheme) {
+            document.documentElement.setAttribute('data-auto-theme', 'true');
+        }
+
+        const theme = localStorage.getItem('cleanwhite-theme') ||
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+
+    
+    <meta property="og:site_name" content="Curiosity">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://FlomeWorld.github.io//img/photo_2026-03-03_13-46-56.jpg">
+    <meta property="twitter:image" content="https://FlomeWorld.github.io//img/photo_2026-03-03_13-46-56.jpg" />
+    
+
+    
+    <meta name="title" content="Research" />
+    <meta property="og:title" content="Research" />
+    <meta property="twitter:title" content="Research" />
+    
+
+    
+    <meta name="description" content="Research blog posts and findings.">
+    <meta property="og:description" content="Research blog posts and findings." />
+    <meta property="twitter:description" content="Research blog posts and findings." />
+    
+
+    <meta property="og:url" content="https://FlomeWorld.github.io/research/" />
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Research | </title>
+
+    <link rel="canonical" href="/research/">
+
+    
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/theme-variables.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.min.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Curiosity</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/learn/">learn</a>
+                        </li>
+                        
+                    
+
+		    
+                        <li><a href="/about/">ABOUT</a></li>
+                    
+                        <li><a href="/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/research/">RESEARCH</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                    
+		            <li>
+                        <a href="#" id="theme-toggle" title="Toggle dark mode" style="opacity: 0;">
+                            <i class="fa fa-moon"></i>
+                            <i class="fa fa-sun" style="display: none;"></i>
+                        </a>
+		           </li>
+                    <script>
+                    (function() {
+                        
+                        var theme = localStorage.getItem('cleanwhite-theme') ||
+                                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                        var toggleBtn = document.getElementById('theme-toggle');
+                        if (toggleBtn) {
+                            var moonIcon = toggleBtn.querySelector('.fa-moon');
+                            var sunIcon = toggleBtn.querySelector('.fa-sun');
+
+                            if (theme === 'dark') {
+                                if (moonIcon) moonIcon.style.display = 'none';
+                                if (sunIcon) sunIcon.style.display = 'inline';
+                                toggleBtn.setAttribute('title', 'Switch to light mode');
+                            } else {
+                                if (moonIcon) moonIcon.style.display = 'inline';
+                                if (sunIcon) sunIcon.style.display = 'none';
+                                toggleBtn.setAttribute('title', 'Switch to dark mode');
+                            }
+
+                            
+                            requestAnimationFrame(function() {
+                                toggleBtn.style.transition = 'opacity 0.2s ease';
+                                toggleBtn.style.opacity = '1';
+                            });
+                        }
+                    })();
+                    </script>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var navLinks = document.querySelectorAll('.navbar-collapse a');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                if ($navbar.className.indexOf('in') > 0) {
+                    
+                    $navbar.className = " ";
+                    setTimeout(function(){
+                        if($navbar.className.indexOf('in') < 0) {
+                            $collapse.style.height = "0px"
+                        }
+                    },400)
+                }
+            });
+        });
+    });
+</script>
+
+
+
+<header class="intro-header" style="background-image: url('/img/photo_2026-03-03_13-46-56.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Curiosity </h1>
+                    
+		    <span class="subheading">Be Curious, Brave, Stay Hungry</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div data-pagefind-ignore="all" class="container">
+    <div class="row">
+        
+        
+   	    <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
+            
+<div data-pagefind-ignore="all">
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/research/embodied-intelligence-project-analysis/">
+        <h2 class="post-title">
+            Embodied AI Research
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Architectural Frontiers in Open-Source Embodied Intelligence: A 2026 Comprehensive Analysis of Vision-Language-Action Systems The evolution of embodied intelligence has reached a critical juncture in early 2026, transitioning from experimental research curiosities to vertically integrated, general-purpose foundation models capable of sophisticated cross-embodiment generalization. This shift is characterized by the dominance of Vision-Language-Action (VLA) architectures, which unify perception, linguistic reasoning, and motor control into single neural pipelines.1 The landscape of open-source robotics has expanded significantly, providing researchers and industrial practitioners with access to models that not only interpret the physical world through a multimodal lens but also execute complex, contact-rich manipulation tasks with unprecedented dexterity.1 Central to the progress observed by February 2026 is the democratization of high-quality training data and the refinement of action-decoding mechanisms. While early models relied heavily on discretized action tokens, current state-of-the-art (SOTA) projects increasingly employ continuous action spaces, flow-matching, and diffusion-based policies to achieve the high-frequency control necessitated by real-world interaction.5
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Saturday, February 7, 2026
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/research/muticlusterrevolution/">
+        <h2 class="post-title">
+            对k8s多集群的理解
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            在 Kubernetes（K8S）的演进历程中，**“单集群规模化”与“多集群联邦化”**始终是一场博弈。
+我曾目睹过太多团队因为单集群 API Server 响应延迟（P99 飙升至秒级）或一次错误的 Global Resource 变更导致全站宕机。在生产环境下，Blast Radius（爆炸半径） 控制永远是第一优先级。多集群架构不再是“选修课”，而是高可用架构的“必修课”。
+核心技术选型：三种主流架构范式 多集群管理不是简单的“1+1”，它涉及到配置一致性、跨集群通信以及全局可观测性。
+维度 方案 A：GitOps 控制平面 (ArgoCD/Flux) 方案 B：开放多集群架构 (OCM/Karmada) 方案 C：服务网格连接 (Istio Multi-Primary) 控制力 中等（声明式最终一致性） 极强（命令+声明混合） 弱（侧重于网络治理） 复杂度 低（上手快，标准化程度高） 高（需要学习新的 CRD 抽象） 极高（证书与网络打通复杂） 性能损耗 极低（仅 Agent 消耗） 中等（中心控制面压力） 高（Sidecar 资源占用） 适用场景 生产环境标准化、大规模分发 复杂调度、多云资源抽象 微服务跨集群同步调用 基于 Karmada 的资源调度演进 如果需要跨云（如 AWS + Azure）进行精细化的资源分发，Karmada 是目前的顶流选择。它保留了原生 K8s API 的语义，降低了开发者的认知负担。
+1. 架构拓扑 (Architecture Topology) Karmada Control Plane：负责监听资源请求，通过 PropagationPolicy 决定分发策略。 Execution Space：为每个成员集群建立隔离的命名空间。 2. 生产级分发策略示例 以下代码展示了如何根据成本或可用区，将 Workload 自动调度到不同的集群：
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Saturday, November 12, 2022
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/research/muticluster_opensource_research/">
+        <h2 class="post-title">
+            K8S多集群开源项目选型研究
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            目前主流的四个开源项目：Karmada、Open Cluster Management (OCM)、KubeAdmiral 以及 Liqo 进行了深度对比研究。
+核心项目多维度对比表 维度 Karmada (CNCF Incubating) OCM (CNCF Sandbox) KubeAdmiral (ByteDance) Liqo (Liquid Computing) 设计理念 K8s API 零侵入，无限接近原生 模块化治理，侧重策略与合规 超大规模调度，极致性能优化 集群对等联邦，资源透明借用 核心优势 调度策略极丰富 (Failover/Weight) Hub-Spoke 架构极稳，扩展性强 适配 AI/GPU 异构资源调度 真正的跨集群 Pod 无感漂移 网络集成 深度集成 Submariner 依赖外部 Mesh 或网关 自带高性能网络插件 内建虚拟网络隧道 上手难度 中等（类似 K8s API） 较高（CRD 较多，配置细碎） 高（适合超大规模集群管理） 低（快速打通两个集群） 适用场景 混合云/多云业务分发 金融级治理、强合规审计 万级节点、海量微服务调度 临时扩容、边缘云弹性扩容 深度解析：选型背后的逻辑 1. Karmada：多云调度 Karmada 是目前最符合 K8s 用户习惯的项目。它最大的杀手锏是其调度器（Scheduler）。
+Propagated Resource: 你只需要把原生的 Deployment 发给 Karmada，它能根据 PropagationPolicy 自动拆分。 Override 机制: 能够针对不同集群修改特定字段（如镜像仓库、资源配额），这对于处理中外多云环境（如 AWS vs 阿里云）非常有效。 2. OCM：大厂的“治理基座” OCM 的设计非常克制。它不强求接管所有 API，而是通过 ManifestWork 来定义“工作内容”。
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Tuesday, July 12, 2022
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+</div>
+
+            
+
+
+
+       	</div>
+        
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+	
+    <section class="visible-md visible-lg">
+	
+        <div class="short-about">
+            
+            <a href="/about">
+               <img src="/img/profile.jpg" alt="avatar" style="cursor: pointer" />
+            </a>
+            
+            
+                <p>AI Infrastructure Architect | Kubernetes & GPU Optimization | Outdoor Adventurer</p>
+            
+           
+           <ul class="list-inline">
+               
+               <li>
+                   <a href="mailto:flomeworld@gmail.com">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                      </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://github.com/FlomeWorld">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://www.linkedin.com/in/huajian-liu-87920189">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+            
+            
+               
+               
+               
+               
+                </ul>
+            </div>
+    </section>
+	
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+               
+                    <a href="/tags/ai" title="ai">
+                        ai
+                    </a>
+               
+            
+               
+                    <a href="/tags/artificial-intelligence" title="artificial intelligence">
+                        artificial intelligence
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse571" title="cse571">
+                        cse571
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse575" title="cse575">
+                        cse575
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse598" title="cse598">
+                        cse598
+                    </a>
+               
+            
+               
+                    <a href="/tags/design" title="design">
+                        design
+                    </a>
+               
+            
+               
+                    <a href="/tags/embodied-ai" title="embodied-ai">
+                        embodied-ai
+                    </a>
+               
+            
+               
+                    <a href="/tags/etcd" title="etcd">
+                        etcd
+                    </a>
+               
+            
+               
+                    <a href="/tags/gazebo" title="gazebo">
+                        gazebo
+                    </a>
+               
+            
+               
+                    <a href="/tags/k8s" title="k8s">
+                        k8s
+                    </a>
+               
+            
+               
+                    <a href="/tags/report" title="report">
+                        report
+                    </a>
+               
+            
+               
+                    <a href="/tags/research" title="research">
+                        research
+                    </a>
+               
+            
+               
+                    <a href="/tags/ros2" title="ros2">
+                        ros2
+                    </a>
+               
+            
+               
+                    <a href="/tags/social-media-mining" title="social media mining">
+                        social media mining
+                    </a>
+               
+            
+               
+                    <a href="/tags/statistical-machine-learning" title="statistical machine learning">
+                        statistical machine learning
+                    </a>
+               
+            
+        </div>
+    </section>
+    
+
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>LAST POSTS</h5>
+        <ul>
+        
+            <li><a href="/post/ai/rdagent/">RD Agents</a></li>
+        
+            <li><a href="/post/ai/agent/">Self-Evolving Agents</a></li>
+        
+            <li><a href="/post/embodiedai/learn_ros2_gazebo/">Learn ROS2 and Gazebo</a></li>
+        
+            <li><a href="/post/learn/cse575-report/">REPORT-CSE575: Statistical Machine Learning</a></li>
+        
+            <li><a href="/post/learn/cse598-report/">REPORT-CSE598: Social Media Mining</a></li>
+        
+        </ul>
+    </section>
+    
+</div>
+
+	</div>
+</div>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="mailto:flomeworld@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/FlomeWorld">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/huajian-liu-87920189">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='/research/index.xml' rel="alternate" type="application/rss+xml" title="Curiosity" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Curiosity 2026
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    (function() {
+        function updateTagcloudColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const startColor = isDark ? '#808080' : '#bbbbee';
+            if($('#tag_cloud').length !== 0 && $.fn.tagcloud) {
+                $.fn.tagcloud.defaults = {
+                    color: {start: startColor, end: '#0085a1'},
+                };
+                $('#tag_cloud a').tagcloud();
+            }
+        }
+
+        
+        $(document).ready(function() {
+            updateTagcloudColors();
+        });
+
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'data-theme') {
+                    updateTagcloudColors();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    })();
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script src="/js/theme-toggle.js"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow" title="' + t + '">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

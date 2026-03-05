@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design on Curiosity</title>
+    <link>https://FlomeWorld.github.io/tags/design/</link>
+    <description>Recent content in Design on Curiosity</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://FlomeWorld.github.io/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Design</title>
+      <link>https://FlomeWorld.github.io/post/design/software-design/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://FlomeWorld.github.io/post/design/software-design/</guid>
+      <description>&lt;h2 id=&#34;the-mind-map-show-the-design-process-from-my-point-of-view&#34;&gt;The mind map show the design process from my point of view&lt;/h2&gt;&#xA;&lt;p&gt;&#xA;  &lt;img src=&#34;https://FlomeWorld.github.io/img/software-design.png&#34; alt=&#34;image info&#34;&gt;&#xA;&#xA;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Modern Java for Enterprise Workloads</title>
+      <link>https://FlomeWorld.github.io/post/design/java-sfotware/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://FlomeWorld.github.io/post/design/java-sfotware/</guid>
+      <description>&lt;h2 id=&#34;modern-java-for-enterprise-workloads&#34;&gt;Modern Java for Enterprise Workloads&lt;/h2&gt;&#xA;&lt;p&gt;The enterprise Java ecosystem was in the midst of a significant transformation. The long-standing dominance of Java 8 was being challenged by the new rapid release cadence introduced with Java 9. Senior architects were navigating the complexities of migrating large, monolithic applications to more modular and cloud-native architectures, all while ensuring stability and performance.&lt;/p&gt;&#xA;&lt;h3 id=&#34;the-architecture-embracing-modularity-and-preparing-for-the-cloud&#34;&gt;The Architecture: Embracing Modularity and Preparing for the Cloud&lt;/h3&gt;&#xA;&lt;p&gt;The architectural shift pre-2020 centered on decomposing large systems and optimizing for resource efficiency, paving the way for eventual containerization.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

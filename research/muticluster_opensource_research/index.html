@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <script>
+    (function() {
+        
+        
+        const autoTheme = false;
+        if (autoTheme) {
+            document.documentElement.setAttribute('data-auto-theme', 'true');
+        }
+
+        const theme = localStorage.getItem('cleanwhite-theme') ||
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+
+    
+    <meta property="og:site_name" content="Curiosity">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://FlomeWorld.github.io//img/photo_2026-03-03_13-46-56.jpg">
+    <meta property="twitter:image" content="https://FlomeWorld.github.io//img/photo_2026-03-03_13-46-56.jpg" />
+    
+
+    
+    <meta name="title" content="K8S多集群开源项目选型研究" />
+    <meta property="og:title" content="K8S多集群开源项目选型研究" />
+    <meta property="twitter:title" content="K8S多集群开源项目选型研究" />
+    
+
+    
+    <meta name="description" content="Welcome to my blog">
+    <meta property="og:description" content="Welcome to my blog" />
+    <meta property="twitter:description" content="Welcome to my blog" />
+    
+
+    <meta property="og:url" content="https://FlomeWorld.github.io/research/muticluster_opensource_research/" />
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>K8S多集群开源项目选型研究 | </title>
+
+    <link rel="canonical" href="/research/muticluster_opensource_research/">
+
+    
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/theme-variables.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.min.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Curiosity</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/learn/">learn</a>
+                        </li>
+                        
+                    
+
+		    
+                        <li><a href="/about/">ABOUT</a></li>
+                    
+                        <li><a href="/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/research/">RESEARCH</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                    
+		            <li>
+                        <a href="#" id="theme-toggle" title="Toggle dark mode" style="opacity: 0;">
+                            <i class="fa fa-moon"></i>
+                            <i class="fa fa-sun" style="display: none;"></i>
+                        </a>
+		           </li>
+                    <script>
+                    (function() {
+                        
+                        var theme = localStorage.getItem('cleanwhite-theme') ||
+                                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                        var toggleBtn = document.getElementById('theme-toggle');
+                        if (toggleBtn) {
+                            var moonIcon = toggleBtn.querySelector('.fa-moon');
+                            var sunIcon = toggleBtn.querySelector('.fa-sun');
+
+                            if (theme === 'dark') {
+                                if (moonIcon) moonIcon.style.display = 'none';
+                                if (sunIcon) sunIcon.style.display = 'inline';
+                                toggleBtn.setAttribute('title', 'Switch to light mode');
+                            } else {
+                                if (moonIcon) moonIcon.style.display = 'inline';
+                                if (sunIcon) sunIcon.style.display = 'none';
+                                toggleBtn.setAttribute('title', 'Switch to dark mode');
+                            }
+
+                            
+                            requestAnimationFrame(function() {
+                                toggleBtn.style.transition = 'opacity 0.2s ease';
+                                toggleBtn.style.opacity = '1';
+                            });
+                        }
+                    })();
+                    </script>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var navLinks = document.querySelectorAll('.navbar-collapse a');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                if ($navbar.className.indexOf('in') > 0) {
+                    
+                    $navbar.className = " ";
+                    setTimeout(function(){
+                        if($navbar.className.indexOf('in') < 0) {
+                            $collapse.style.height = "0px"
+                        }
+                    },400)
+                }
+            });
+        });
+    });
+</script>
+
+
+
+<header class="intro-header" style="background-image: url('/img/photo_2026-03-03_13-46-56.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Curiosity </h1>
+                    
+		    <span class="subheading">Be Curious, Brave, Stay Hungry</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            
+            <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container">
+            
+                <p>目前主流的四个开源项目：<strong>Karmada</strong>、<strong>Open Cluster Management (OCM)</strong>、<strong>KubeAdmiral</strong> 以及 <strong>Liqo</strong> 进行了深度对比研究。</p>
+<hr>
+<h2 id="核心项目多维度对比表">核心项目多维度对比表</h2>
+<table>
+  <thead>
+      <tr>
+          <th>维度</th>
+          <th><strong>Karmada</strong> (CNCF Incubating)</th>
+          <th><strong>OCM</strong> (CNCF Sandbox)</th>
+          <th><strong>KubeAdmiral</strong> (ByteDance)</th>
+          <th><strong>Liqo</strong> (Liquid Computing)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>设计理念</strong></td>
+          <td>K8s API 零侵入，无限接近原生</td>
+          <td>模块化治理，侧重策略与合规</td>
+          <td>超大规模调度，极致性能优化</td>
+          <td>集群对等联邦，资源透明借用</td>
+      </tr>
+      <tr>
+          <td><strong>核心优势</strong></td>
+          <td><strong>调度策略极丰富</strong> (Failover/Weight)</td>
+          <td><strong>Hub-Spoke 架构极稳</strong>，扩展性强</td>
+          <td>适配 <strong>AI/GPU</strong> 异构资源调度</td>
+          <td>真正的<strong>跨集群 Pod 无感漂移</strong></td>
+      </tr>
+      <tr>
+          <td><strong>网络集成</strong></td>
+          <td>深度集成 Submariner</td>
+          <td>依赖外部 Mesh 或网关</td>
+          <td>自带高性能网络插件</td>
+          <td>内建虚拟网络隧道</td>
+      </tr>
+      <tr>
+          <td><strong>上手难度</strong></td>
+          <td>中等（类似 K8s API）</td>
+          <td>较高（CRD 较多，配置细碎）</td>
+          <td>高（适合超大规模集群管理）</td>
+          <td>低（快速打通两个集群）</td>
+      </tr>
+      <tr>
+          <td><strong>适用场景</strong></td>
+          <td>混合云/多云业务分发</td>
+          <td>金融级治理、强合规审计</td>
+          <td>万级节点、海量微服务调度</td>
+          <td>临时扩容、边缘云弹性扩容</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="深度解析选型背后的逻辑">深度解析：选型背后的逻辑</h2>
+<h3 id="1-karmada多云调度">1. Karmada：多云调度</h3>
+<p>Karmada 是目前最符合 K8s 用户习惯的项目。它最大的杀手锏是其<strong>调度器（Scheduler）</strong>。</p>
+<ul>
+<li><strong>Propagated Resource</strong>: 你只需要把原生的 Deployment 发给 Karmada，它能根据 <code>PropagationPolicy</code> 自动拆分。</li>
+<li><strong>Override 机制</strong>: 能够针对不同集群修改特定字段（如镜像仓库、资源配额），这对于处理中外多云环境（如 AWS vs 阿里云）非常有效。</li>
+</ul>
+<h3 id="2-ocm大厂的治理基座">2. OCM：大厂的“治理基座”</h3>
+<p>OCM 的设计非常克制。它不强求接管所有 API，而是通过 <strong>ManifestWork</strong> 来定义“工作内容”。</p>
+<ul>
+<li><strong>安全性</strong>: OCM 对 Spoke 集群的控制是<strong>拉模式（Pull Mode）</strong>，这在安全性要求极高的金融场景中是必须的。</li>
+<li><strong>策略引擎</strong>: 配合治理策略（Policy），可以强制所有集群必须安装特定版本的安全组件。</li>
+</ul>
+<h3 id="3-liqo打破集群边界的黑科技">3. Liqo：打破集群边界的“黑科技”</h3>
+<p>Liqo 的思路最激进，它通过 <strong>Virtual Node</strong> 模式，让集群 A 看起来像是集群 B 的一个节点。</p>
+<ul>
+<li><strong>无感扩展</strong>: 当本地集群资源不足时，Pod 可以直接调度到“远端集群”的虚拟节点上。</li>
+<li><strong>网络穿透</strong>: 自动建立 VPN 隧道，Pod IP 跨集群互通。</li>
+</ul>
+<hr>
+<h2 id="生产环境实战yaml-配置对比">生产环境实战：YAML 配置对比</h2>
+<h3 id="karmada-的分发逻辑策略驱动">Karmada 的分发逻辑（策略驱动）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Karmada PropagationPolicy</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">policy.karmada.io/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PropagationPolicy</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dynamic-web-policy</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">resourceSelectors</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-web-app</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">placement</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 动态调度：优先选择 CPU 负载低的集群</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">replicaScheduling</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replicaDivisionStrategy</span>: <span style="color:#ae81ff">Weighted</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">replicaSchedulingType</span>: <span style="color:#ae81ff">Divided</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weightPreference</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">staticWeightList</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">targetCluster</span>: {<span style="color:#f92672">clusterNames</span>: [<span style="color:#e6db74">&#34;ali-hangzhou&#34;</span>]}
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">70</span>
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">targetCluster</span>: {<span style="color:#f92672">clusterNames</span>: [<span style="color:#e6db74">&#34;aws-tokyo&#34;</span>]}
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">30</span>
+</span></span></code></pre></div><h3 id="ocm-的分发逻辑显式分发">OCM 的分发逻辑（显式分发）</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># OCM ManifestWork</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">work.open-cluster-management.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ManifestWork</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web-app-work</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">cluster-region-1</span> <span style="color:#75715e"># 对应特定子集群的 NS</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">workload</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">manifests</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-web-app</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># ... 原生定义</span>
+</span></span></code></pre></div><hr>
+<h2 id="总结">总结</h2>
+<ol>
+<li><strong>如果你追求极致的 K8s 原生体验</strong>：首选 <strong>Karmada</strong>。它的架构最符合云原生趋势，且对于应用层面的调度支持最为精细。</li>
+<li><strong>如果你在构建企业级 PaaS 平台</strong>：建议以 <strong>OCM</strong> 作为底层组件，其模块化设计允许你像搭积木一样叠加监控、日志和安全插件。</li>
+<li><strong>如果你面临 AI/大数据的大规模集群压测</strong>：<strong>KubeAdmiral</strong> 在处理海量更新和 GPU 调度优化上，由于有字节跳动的背书，其性能上限更高。</li>
+<li><strong>如果你只是想快速临时“借用”另一个集群的计算力</strong>：用 <strong>Liqo</strong>。它不需要复杂的控制面初始化，两行命令即可打通。</li>
+</ol>
+
+            
+             
+            
+
+
+<div id="disqus-comment"></div>
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Harvey" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+            
+            </div>
+            
+            
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+	
+    <section class="visible-md visible-lg">
+	
+        <div class="short-about">
+            
+            <a href="/about">
+               <img src="/img/profile.jpg" alt="avatar" style="cursor: pointer" />
+            </a>
+            
+            
+                <p>AI Infrastructure Architect | Kubernetes & GPU Optimization | Outdoor Adventurer</p>
+            
+           
+           <ul class="list-inline">
+               
+               <li>
+                   <a href="mailto:flomeworld@gmail.com">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                      </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://github.com/FlomeWorld">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://www.linkedin.com/in/huajian-liu-87920189">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+            
+            
+               
+               
+               
+               
+                </ul>
+            </div>
+    </section>
+	
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+               
+                    <a href="/tags/ai" title="ai">
+                        ai
+                    </a>
+               
+            
+               
+                    <a href="/tags/artificial-intelligence" title="artificial intelligence">
+                        artificial intelligence
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse571" title="cse571">
+                        cse571
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse575" title="cse575">
+                        cse575
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse598" title="cse598">
+                        cse598
+                    </a>
+               
+            
+               
+                    <a href="/tags/design" title="design">
+                        design
+                    </a>
+               
+            
+               
+                    <a href="/tags/embodied-ai" title="embodied-ai">
+                        embodied-ai
+                    </a>
+               
+            
+               
+                    <a href="/tags/etcd" title="etcd">
+                        etcd
+                    </a>
+               
+            
+               
+                    <a href="/tags/gazebo" title="gazebo">
+                        gazebo
+                    </a>
+               
+            
+               
+                    <a href="/tags/k8s" title="k8s">
+                        k8s
+                    </a>
+               
+            
+               
+                    <a href="/tags/report" title="report">
+                        report
+                    </a>
+               
+            
+               
+                    <a href="/tags/research" title="research">
+                        research
+                    </a>
+               
+            
+               
+                    <a href="/tags/ros2" title="ros2">
+                        ros2
+                    </a>
+               
+            
+               
+                    <a href="/tags/social-media-mining" title="social media mining">
+                        social media mining
+                    </a>
+               
+            
+               
+                    <a href="/tags/statistical-machine-learning" title="statistical machine learning">
+                        statistical machine learning
+                    </a>
+               
+            
+        </div>
+    </section>
+    
+
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>LAST POSTS</h5>
+        <ul>
+        
+            <li><a href="/post/ai/rdagent/">RD Agents</a></li>
+        
+            <li><a href="/post/ai/agent/">Self-Evolving Agents</a></li>
+        
+            <li><a href="/post/embodiedai/learn_ros2_gazebo/">Learn ROS2 and Gazebo</a></li>
+        
+            <li><a href="/post/learn/cse575-report/">REPORT-CSE575: Statistical Machine Learning</a></li>
+        
+            <li><a href="/post/learn/cse598-report/">REPORT-CSE598: Social Media Mining</a></li>
+        
+        </ul>
+    </section>
+    
+</div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="mailto:flomeworld@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/FlomeWorld">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/huajian-liu-87920189">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Curiosity" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Curiosity 2026
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    (function() {
+        function updateTagcloudColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const startColor = isDark ? '#808080' : '#bbbbee';
+            if($('#tag_cloud').length !== 0 && $.fn.tagcloud) {
+                $.fn.tagcloud.defaults = {
+                    color: {start: startColor, end: '#0085a1'},
+                };
+                $('#tag_cloud a').tagcloud();
+            }
+        }
+
+        
+        $(document).ready(function() {
+            updateTagcloudColors();
+        });
+
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'data-theme') {
+                    updateTagcloudColors();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    })();
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script src="/js/theme-toggle.js"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow" title="' + t + '">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

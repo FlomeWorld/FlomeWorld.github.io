@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gazebo on Curiosity</title>
+    <link>https://FlomeWorld.github.io/tags/gazebo/</link>
+    <description>Recent content in Gazebo on Curiosity</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://FlomeWorld.github.io/tags/gazebo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learn ROS2 and Gazebo</title>
+      <link>https://FlomeWorld.github.io/post/embodiedai/learn_ros2_gazebo/</link>
+      <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://FlomeWorld.github.io/post/embodiedai/learn_ros2_gazebo/</guid>
+      <description>&lt;h2 id=&#34;mastering-the-future-of-robotics-a-guide-to-ros-2-and-gazebo&#34;&gt;Mastering the Future of Robotics: A Guide to ROS 2 and Gazebo&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to the cutting edge of robotics development! If you&amp;rsquo;re looking to build everything from autonomous vacuum cleaners to industrial arms, you’ve come to the right place. Today, we’re diving into the two most essential tools in a roboticist&amp;rsquo;s toolkit: &lt;strong&gt;ROS 2 (Robot Operating System)&lt;/strong&gt; and &lt;strong&gt;Gazebo&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Whether you&amp;rsquo;re an experienced Python developer or a newcomer to the field, this duo provides the framework and the playground you need to turn code into physical motion.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

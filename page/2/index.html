@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.157.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <script>
+    (function() {
+        
+        
+        const autoTheme = false;
+        if (autoTheme) {
+            document.documentElement.setAttribute('data-auto-theme', 'true');
+        }
+
+        const theme = localStorage.getItem('cleanwhite-theme') ||
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+
+    
+    <meta property="og:site_name" content="Curiosity">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://FlomeWorld.github.io//img/photo_2026-03-03_13-46-56.jpg">
+    <meta property="twitter:image" content="https://FlomeWorld.github.io//img/photo_2026-03-03_13-46-56.jpg" />
+    
+
+    
+    <meta name="title" content="" />
+    <meta property="og:title" content="" />
+    <meta property="twitter:title" content="" />
+    
+
+    
+    <meta name="description" content="Welcome to my blog">
+    <meta property="og:description" content="Welcome to my blog" />
+    <meta property="twitter:description" content="Welcome to my blog" />
+    
+
+    <meta property="og:url" content="https://FlomeWorld.github.io/" />
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Curiosity | </title>
+
+    <link rel="canonical" href="/">
+
+    
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.css">
+
+    
+    <link rel="stylesheet" href="/css/theme-variables.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.min.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Curiosity</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/learn/">learn</a>
+                        </li>
+                        
+                    
+
+		    
+                        <li><a href="/about/">ABOUT</a></li>
+                    
+                        <li><a href="/archive/">ARCHIVE</a></li>
+                    
+                        <li><a href="/research/">RESEARCH</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                    
+		            <li>
+                        <a href="#" id="theme-toggle" title="Toggle dark mode" style="opacity: 0;">
+                            <i class="fa fa-moon"></i>
+                            <i class="fa fa-sun" style="display: none;"></i>
+                        </a>
+		           </li>
+                    <script>
+                    (function() {
+                        
+                        var theme = localStorage.getItem('cleanwhite-theme') ||
+                                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                        var toggleBtn = document.getElementById('theme-toggle');
+                        if (toggleBtn) {
+                            var moonIcon = toggleBtn.querySelector('.fa-moon');
+                            var sunIcon = toggleBtn.querySelector('.fa-sun');
+
+                            if (theme === 'dark') {
+                                if (moonIcon) moonIcon.style.display = 'none';
+                                if (sunIcon) sunIcon.style.display = 'inline';
+                                toggleBtn.setAttribute('title', 'Switch to light mode');
+                            } else {
+                                if (moonIcon) moonIcon.style.display = 'inline';
+                                if (sunIcon) sunIcon.style.display = 'none';
+                                toggleBtn.setAttribute('title', 'Switch to dark mode');
+                            }
+
+                            
+                            requestAnimationFrame(function() {
+                                toggleBtn.style.transition = 'opacity 0.2s ease';
+                                toggleBtn.style.opacity = '1';
+                            });
+                        }
+                    })();
+                    </script>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var navLinks = document.querySelectorAll('.navbar-collapse a');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                if ($navbar.className.indexOf('in') > 0) {
+                    
+                    $navbar.className = " ";
+                    setTimeout(function(){
+                        if($navbar.className.indexOf('in') < 0) {
+                            $collapse.style.height = "0px"
+                        }
+                    },400)
+                }
+            });
+        });
+    });
+</script>
+
+
+
+<header class="intro-header" style="background-image: url('/img/photo_2026-03-03_13-46-56.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Curiosity </h1>
+                    
+		    <span class="subheading">Be Curious, Brave, Stay Hungry</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+  
+<div data-pagefind-ignore="all" class="container">
+    <div class="row">
+        
+        
+   	    <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
+            
+<div data-pagefind-ignore="all">
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/k8s/clusterversionupgrade/cluster-version-upgrade/">
+        <h2 class="post-title">
+            K8S Cluster Version Upgrade
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            k8s cluster upgrade the flow chart instruction backup backup and restore etcd data https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md#restoring-a-cluster
+etcdctl --cacert --cert --key --endpoints upgrade control plane upgrade node upgrade argrithm 1node 2node 4node 8node maxium 10% nodes number
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Sunday, June 13, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/learn/likeapro/like-a-pro/">
+        <h2 class="post-title">
+            Like a Pro
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            long term memory How to Overcome Procrastination and Focus Intently insular cortex pain make the procrastination clear your desk and get rid of anything that could distract you.
+Then set a timer for 25 minutes
+Once you&rsquo;re done, take a rewarding break for about 5 minutes(doing something mindless or You&rsquo;ll start overwhelming your hippocampus,)
+its flexable (One analysis found that the most productive employees worked for around 52 minutes and then took a 17 minute break.)
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Sunday, June 13, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/k8s/scheduler/extender/">
+        <h2 class="post-title">
+            Extender
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Scheduler extender instruction: https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md
+example
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Monday, May 25, 2020
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/k8s/gc/garbage-collection/">
+        <h2 class="post-title">
+            Garbage Collection
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Garbage Collection instruction: https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/
+mindmap e.g I use the steps bellow to explation principle of gc
+1. create the deployment apiVersion: apps/v1 kind: Deployment metadata: name: nginx-deployment labels: app: nginx spec: replicas: 3 selector: matchLabels: app: nginx template: metadata: labels: app: nginx spec: containers: - name: nginx image: nginx:1.14.2 ports: - containerPort: 80 2. delete the rs prepare : I stop the kubelet so the pod belong to rs will be not deleted delete the resource with the propagationPloicy equel to &lsquo;Foreground&rsquo; curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/deployments/nginx-deployment -d &#39;{&#34;kind&#34;:&#34;DeleteOptions&#34;,&#34;apiVersion&#34;:&#34;v1&#34;,&#34;propagationPolicy&#34;:&#34;Orphan&#34;}&#39; -H &#34;Content-Type: application/json&#34; the result: (base) frankie@frankie-XPS-15-9550:~/Documents/test$kubectl get pod NAME READY STATUS RESTARTS AGE nginx-deployment-57d9684bf8-bnx88 1/1 Running 0 35m nginx-deployment-57d9684bf8-nxnr6 1/1 Running 0 35m nginx-deployment-57d9684bf8-q4zj2 1/1 Running 0 35m (base) frankie@frankie-XPS-15-9550:~/Documents/test$ kubectl get rs NAME DESIRED CURRENT READY AGE nginx-deployment-57d9684bf8 3 3 3 2m40s (base) frankie@frankie-XPS-15-9550:~/Documents/test$ kubectl get deploy No resources found. It show that only the deployment resource was deleted
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Friday, May 22, 2020
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/design/software-design/">
+        <h2 class="post-title">
+            Software Design
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            The mind map show the design process from my point of view 
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Tuesday, May 12, 2020
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/k8s/scheduler/scheduler/">
+        <h2 class="post-title">
+            Scheduler
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            kubernetes 调度器
+调度器作为一个独立运行的master节点组件，通过与API server交互来获取新创建的pod资源和每个node信息的变化，以此来为新的pod选择一个最优秀的节点进行部署。
+代码结构 代码框架可以分为三层:初始化配置，架构，算法
+初始化配置 程序入口
+cmd/kube-scheduler/scheduler.go为程序的入口，和其他组件一样依赖&quot;github.com/spf13/pflag&quot;来实现参数的配置和程序的执行 核心代码：
+// Run executes the scheduler based on the given configuration. It only returns on error or when context is done. func Run(ctx context.Context, cc schedulerserverconfig.CompletedConfig, outOfTreeRegistryOptions ...Option) error { ...... // 外部插件注册 outOfTreeRegistry := make(framework.Registry) for _, option := range outOfTreeRegistryOptions { if err := option(outOfTreeRegistry); err != nil { return err } } ...... // 创建scheduler实例 sched, err := scheduler.New(cc.Client, cc.InformerFactory, cc.PodInformer, cc.Recorder, ctx.Done(), ...... // 准备事件广播器 if cc.Broadcaster != nil &amp;&amp; cc.EventClient != nil { cc.Broadcaster.StartRecordingToSink(ctx.Done()) } if cc.CoreBroadcaster != nil &amp;&amp; cc.CoreEventClient != nil { cc.CoreBroadcaster.StartRecordingToSink(&amp;corev1.EventSinkImpl{Interface: cc.CoreEventClient.Events(&#34;&#34;)}) } // 启动健康检查以及监控指标服务 if cc.InsecureServing != nil { separateMetrics := cc.InsecureMetricsServing != nil handler := buildHandlerChain(newHealthzHandler(&amp;cc.ComponentConfig, separateMetrics, checks...), nil, nil) if err := cc.InsecureServing.Serve(handler, 0, ctx.Done()); err != nil { return fmt.Errorf(&#34;failed to start healthz server: %v&#34;, err) } } ...... // 启动informer来watch pod以及其他资源的状况 go cc.PodInformer.Informer().Run(ctx.Done()) cc.InformerFactory.Start(ctx.Done()) // Wait for all caches to sync before scheduling. cc.InformerFactory.WaitForCacheSync(ctx.Done()) // 开启选举机制 if cc.LeaderElection != nil { cc.LeaderElection.Callbacks = leaderelection.LeaderCallbacks{ OnStartedLeading: sched.Run, OnStoppedLeading: func() { klog.Fatalf(&#34;leaderelection lost&#34;) }, ....... // 执行调度架构 sched.Run(ctx) return fmt.Errorf(&#34;finished without leader elect&#34;) } 总结
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Saturday, May 9, 2020
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/design/java-sfotware/">
+        <h2 class="post-title">
+            Modern Java for Enterprise Workloads
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Modern Java for Enterprise Workloads The enterprise Java ecosystem was in the midst of a significant transformation. The long-standing dominance of Java 8 was being challenged by the new rapid release cadence introduced with Java 9. Senior architects were navigating the complexities of migrating large, monolithic applications to more modular and cloud-native architectures, all while ensuring stability and performance.
+The Architecture: Embracing Modularity and Preparing for the Cloud The architectural shift pre-2020 centered on decomposing large systems and optimizing for resource efficiency, paving the way for eventual containerization.
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Thursday, April 9, 2020
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/edx/data-analysis/6.86x/">
+        <h2 class="post-title">
+            
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Monday, January 1, 0001
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/edx/data-analysis/notebook/">
+        <h2 class="post-title">
+            
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Prerequisites This course is intended as the final course in the MicroMasters Program in Statistics and Data Science, but open to all students with appropriate prerequisites. You are expected, and strongly encouraged, to have taken:
+6.431x Probability–the Science of Uncertainty and Data Science or equivalent
+18.6501x Fundamentals of Statistics
+6.86x Machine Learning with Python–From Linear Models to Deep Learning
+Python Programming, such as 6.00.1x Introduction to Computer Science and Programming Using Python, and 6.00.2x Introduction to Computational Thinking and Data Science
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Monday, January 1, 0001
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/edx/prerequisites/linear-algebra/note/">
+        <h2 class="post-title">
+            
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Monday, January 1, 0001
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+</div>
+
+            
+
+
+<ul class="pager" data-pagefind-ignore="all">
+    
+    <li class="previous">
+        <a href="/">&larr; Newer Posts</a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/page/3/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+       	</div>
+        
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+	
+    <section class="visible-md visible-lg">
+	
+        <div class="short-about">
+            
+            <a href="/about">
+               <img src="/img/profile.jpg" alt="avatar" style="cursor: pointer" />
+            </a>
+            
+            
+                <p>AI Infrastructure Architect | Kubernetes & GPU Optimization | Outdoor Adventurer</p>
+            
+           
+           <ul class="list-inline">
+               
+               <li>
+                   <a href="mailto:flomeworld@gmail.com">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                      </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://github.com/FlomeWorld">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://www.linkedin.com/in/huajian-liu-87920189">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+            
+            
+               
+               
+               
+               
+                </ul>
+            </div>
+    </section>
+	
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            
+            
+               
+                    <a href="/tags/ai" title="ai">
+                        ai
+                    </a>
+               
+            
+               
+                    <a href="/tags/artificial-intelligence" title="artificial intelligence">
+                        artificial intelligence
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse571" title="cse571">
+                        cse571
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse575" title="cse575">
+                        cse575
+                    </a>
+               
+            
+               
+                    <a href="/tags/cse598" title="cse598">
+                        cse598
+                    </a>
+               
+            
+               
+                    <a href="/tags/design" title="design">
+                        design
+                    </a>
+               
+            
+               
+                    <a href="/tags/embodied-ai" title="embodied-ai">
+                        embodied-ai
+                    </a>
+               
+            
+               
+                    <a href="/tags/etcd" title="etcd">
+                        etcd
+                    </a>
+               
+            
+               
+                    <a href="/tags/gazebo" title="gazebo">
+                        gazebo
+                    </a>
+               
+            
+               
+                    <a href="/tags/k8s" title="k8s">
+                        k8s
+                    </a>
+               
+            
+               
+                    <a href="/tags/report" title="report">
+                        report
+                    </a>
+               
+            
+               
+                    <a href="/tags/research" title="research">
+                        research
+                    </a>
+               
+            
+               
+                    <a href="/tags/ros2" title="ros2">
+                        ros2
+                    </a>
+               
+            
+               
+                    <a href="/tags/social-media-mining" title="social media mining">
+                        social media mining
+                    </a>
+               
+            
+               
+                    <a href="/tags/statistical-machine-learning" title="statistical machine learning">
+                        statistical machine learning
+                    </a>
+               
+            
+        </div>
+    </section>
+    
+
+    
+    
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>LAST POSTS</h5>
+        <ul>
+        
+            <li><a href="/post/ai/rdagent/">RD Agents</a></li>
+        
+            <li><a href="/post/ai/agent/">Self-Evolving Agents</a></li>
+        
+            <li><a href="/post/embodiedai/learn_ros2_gazebo/">Learn ROS2 and Gazebo</a></li>
+        
+            <li><a href="/post/learn/cse575-report/">REPORT-CSE575: Statistical Machine Learning</a></li>
+        
+            <li><a href="/post/learn/cse598-report/">REPORT-CSE598: Social Media Mining</a></li>
+        
+        </ul>
+    </section>
+    
+</div>
+
+	</div>
+</div>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="mailto:flomeworld@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/FlomeWorld">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/huajian-liu-87920189">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='/index.xml' rel="alternate" type="application/rss+xml" title="Curiosity" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Curiosity 2026
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    (function() {
+        function updateTagcloudColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const startColor = isDark ? '#808080' : '#bbbbee';
+            if($('#tag_cloud').length !== 0 && $.fn.tagcloud) {
+                $.fn.tagcloud.defaults = {
+                    color: {start: startColor, end: '#0085a1'},
+                };
+                $('#tag_cloud a').tagcloud();
+            }
+        }
+
+        
+        $(document).ready(function() {
+            updateTagcloudColors();
+        });
+
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'data-theme') {
+                    updateTagcloudColors();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    })();
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<script src="/js/theme-toggle.js"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow" title="' + t + '">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
