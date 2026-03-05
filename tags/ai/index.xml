@@ -9,13 +9,6 @@
     <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://FlomeWorld.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RD Agents</title>
-      <link>https://FlomeWorld.github.io/post/ai/rdagent/</link>
-      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://FlomeWorld.github.io/post/ai/rdagent/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Self-Evolving Agents</title>
       <link>https://FlomeWorld.github.io/post/ai/agent/</link>
       <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>

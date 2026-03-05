@@ -6,14 +6,14 @@
     <description>Recent content in Posts on Curiosity</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://FlomeWorld.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RD Agents</title>
       <link>https://FlomeWorld.github.io/post/ai/rdagent/</link>
-      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://FlomeWorld.github.io/post/ai/rdagent/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;deep-dive-engineering-autonomous-rd-with-rd-agent&#34;&gt;Deep Dive: Engineering Autonomous R&amp;amp;D with RD-Agent&lt;/h2&gt;&#xA;&lt;p&gt;The landscape of Artificial Intelligence is shifting from static inference to dynamic, autonomous evolution. &lt;strong&gt;RD-Agent&lt;/strong&gt;, an open-source initiative from Microsoft Research, represents a paradigm shift in how we approach Research and Development (R&amp;amp;D) automation. By codifying the experimental loop—hypothesize, implement, execute, and learn—RD-Agent transitions AI from a simple coding assistant to a self-evolving R&amp;amp;D entity.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-architecture-solving-the-reasoning-fatigue-bottleneck&#34;&gt;The Architecture: Solving the &amp;ldquo;Reasoning Fatigue&amp;rdquo; Bottleneck&lt;/h3&gt;&#xA;&lt;p&gt;Traditional LLM-based agents often struggle with long-horizon tasks due to context window saturation and the accumulation of minor errors during multi-step reasoning. RD-Agent bypasses these limitations by implementing a &lt;strong&gt;Decoupled Dual-Agent Architecture&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Self-Evolving Agents</title>
