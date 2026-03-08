@@ -80,8 +80,17 @@
     <loc>https://FlomeWorld.github.io/post/learn/cse571-report/</loc>
     <lastmod>2024-03-05T18:05:00+08:00</lastmod>
   </url><url>
+    <loc>https://FlomeWorld.github.io/post/k8s/servicemesh/istio/</loc>
+    <lastmod>2023-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://FlomeWorld.github.io/tags/istio/</loc>
+    <lastmod>2023-03-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://FlomeWorld.github.io/tags/k8s/</loc>
-    <lastmod>2022-11-12T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://FlomeWorld.github.io/tags/servicemesh/</loc>
+    <lastmod>2023-03-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://FlomeWorld.github.io/research/muticlusterrevolution/</loc>
     <lastmod>2022-11-12T00:00:00+00:00</lastmod>

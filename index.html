@@ -431,6 +431,32 @@ Whether you&rsquo;re an experienced Python developer or a newcomer to the field,
 <hr>
 
 <div class="post-preview">
+    <a href="https://FlomeWorld.github.io/post/k8s/servicemesh/istio/">
+        <h2 class="post-title">
+            Istio
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            摘要：从 Sidecar 到 Ambient 的演化逻辑 在过去数年中，Sidecar 模式一直是 Kubernetes 服务网格的事实标准，但其带来的资源开销、复杂的注入机制以及对应用生命周期的强侵入性，始终是大规模运维中的痛点 。Istio 引入的 Ambient Mode（无代理模式） 代表了网格架构的一次范式转移：通过将数据面解耦为轻量级的分层代理（L4 ztunnel 与 L7 Waypoint），在维持强大治理能力的同时，显著降低了运维复杂度与成本 。
+架构选型：Sidecar vs. Ambient 深度对比 Istio 的数据面目前由两种主要的部署模式构成，它们在拦截机制、资源利用率和安全模型上存在本质差异。
+核心差异矩阵 维度 Sidecar 模式 Ambient 模式 部署单元 每个 Pod 注入一个 Envoy 代理 节点级 ztunnel (L4) + 可选 Waypoint (L7) 资源效率 较差；需按各 Pod 峰值预留资源 优秀；Waypoint 可根据负载独立弹性缩放 应用入侵 需重启 Pod 以完成 Sidecar 注入 无需重启；通过命名空间标签即时启用 平均延迟 0.63ms - 0.88ms L4: 0.16ms - 0.20ms; L7: 0.40ms - 0.50ms 安全模型 隔离性最高；每个负载拥有独立私钥 节点级代理持有该节点所有负载的证书 L7 处理步长 2 跳（源 Sidecar + 目标 Sidecar） 1 跳（仅在目标端 Waypoint 处理） 深度解析：Ambient 模式的分层治理 Ambient 模式的精髓在于分层（Layering）。它将传统 Sidecar 的全量功能拆分为两个独立组件，从而实现了 L4 和 L7 的解耦 。
+
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Curiosity on Monday, March 20, 2023
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://FlomeWorld.github.io/research/muticlusterrevolution/">
         <h2 class="post-title">
             对k8s多集群的理解
@@ -476,34 +502,6 @@ Propagated Resource: 你只需要把原生的 Deployment 发给 Karmada，它能
     <p class="post-meta">
     
         Posted by Curiosity on Tuesday, July 12, 2022
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://FlomeWorld.github.io/post/etcd/performance_test/">
-        <h2 class="post-title">
-            Etcd Performance Test
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Performance instruction
-https://etcd.io/docs/v3.4.0/benchmarks/etcd-3-demo-benchmarks/
-issues error info etcdserver: mvcc: database space exceeded
-solution https://github.com/etcd-io/etcd/issues/11947 https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/maintenance.md#space-quota https://github.com/etcd-io/etcd/issues/10312
-performance test etcd-proxy with the high pressure test the proxy not take much resource usage, the request can be set like 0.2c,50m limit can be set like 0.3,100m
-
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Curiosity on Wednesday, July 14, 2021
         
         
     
@@ -672,6 +670,12 @@ performance test etcd-proxy with the high pressure test the proxy not take much 
                
             
                
+                    <a href="/tags/istio" title="istio">
+                        istio
+                    </a>
+               
+            
+               
                     <a href="/tags/k8s" title="k8s">
                         k8s
                     </a>
@@ -692,6 +696,12 @@ performance test etcd-proxy with the high pressure test the proxy not take much 
                
                     <a href="/tags/ros2" title="ros2">
                         ros2
+                    </a>
+               
+            
+               
+                    <a href="/tags/servicemesh" title="servicemesh">
+                        servicemesh
                     </a>
                
             

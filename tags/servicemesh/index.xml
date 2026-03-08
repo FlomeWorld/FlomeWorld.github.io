@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Servicemesh on Curiosity</title>
+    <link>https://FlomeWorld.github.io/tags/servicemesh/</link>
+    <description>Recent content in Servicemesh on Curiosity</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://FlomeWorld.github.io/tags/servicemesh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Istio</title>
+      <link>https://FlomeWorld.github.io/post/k8s/servicemesh/istio/</link>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>https://FlomeWorld.github.io/post/k8s/servicemesh/istio/</guid>
+      <description>&lt;h2 id=&#34;摘要从-sidecar-到-ambient-的演化逻辑&#34;&gt;摘要：从 Sidecar 到 Ambient 的演化逻辑&lt;/h2&gt;&#xA;&lt;p&gt;在过去数年中，Sidecar 模式一直是 Kubernetes 服务网格的事实标准，但其带来的资源开销、复杂的注入机制以及对应用生命周期的强侵入性，始终是大规模运维中的痛点 。Istio 引入的 &lt;strong&gt;Ambient Mode（无代理模式）&lt;/strong&gt; 代表了网格架构的一次范式转移：通过将数据面解耦为轻量级的分层代理（L4 ztunnel 与 L7 Waypoint），在维持强大治理能力的同时，显著降低了运维复杂度与成本 。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;架构选型sidecar-vs-ambient-深度对比&#34;&gt;架构选型：Sidecar vs. Ambient 深度对比&lt;/h2&gt;&#xA;&lt;p&gt;Istio 的数据面目前由两种主要的部署模式构成，它们在拦截机制、资源利用率和安全模型上存在本质差异。&lt;/p&gt;&#xA;&lt;h3 id=&#34;核心差异矩阵&#34;&gt;核心差异矩阵&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;维度&lt;/th&gt;&#xA;          &lt;th&gt;Sidecar 模式&lt;/th&gt;&#xA;          &lt;th&gt;Ambient 模式&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;部署单元&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;每个 Pod 注入一个 Envoy 代理&lt;/td&gt;&#xA;          &lt;td&gt;节点级 ztunnel (L4) + 可选 Waypoint (L7)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;资源效率&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;较差；需按各 Pod 峰值预留资源&lt;/td&gt;&#xA;          &lt;td&gt;优秀；Waypoint 可根据负载独立弹性缩放&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;应用入侵&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;需重启 Pod 以完成 Sidecar 注入&lt;/td&gt;&#xA;          &lt;td&gt;无需重启；通过命名空间标签即时启用&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;平均延迟&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;0.63ms - 0.88ms&lt;/td&gt;&#xA;          &lt;td&gt;L4: 0.16ms - 0.20ms; L7: 0.40ms - 0.50ms&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;安全模型&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;隔离性最高；每个负载拥有独立私钥&lt;/td&gt;&#xA;          &lt;td&gt;节点级代理持有该节点所有负载的证书&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;L7 处理步长&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2 跳（源 Sidecar + 目标 Sidecar）&lt;/td&gt;&#xA;          &lt;td&gt;1 跳（仅在目标端 Waypoint 处理）&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;深度解析ambient-模式的分层治理&#34;&gt;深度解析：Ambient 模式的分层治理&lt;/h2&gt;&#xA;&lt;p&gt;Ambient 模式的精髓在于&lt;strong&gt;分层（Layering）&lt;/strong&gt;。它将传统 Sidecar 的全量功能拆分为两个独立组件，从而实现了 L4 和 L7 的解耦 。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

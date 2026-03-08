@@ -42,7 +42,7 @@
     <meta property="twitter:description" content="Welcome to my blog" />
     
 
-    <meta property="og:url" content="https://FlomeWorld.github.io/categories/learn/" />
+    <meta property="og:url" content="https://FlomeWorld.github.io/tags/servicemesh/" />
 
     
     <meta property="twitter:card" content="summary" />
@@ -52,9 +52,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Learn | </title>
+    <title>Servicemesh | </title>
 
-    <link rel="canonical" href="/categories/learn/">
+    <link rel="canonical" href="/tags/servicemesh/">
 
     
 
@@ -263,66 +263,23 @@
 <div data-pagefind-ignore="all">
 
 <div class="post-preview">
-    <a href="https://FlomeWorld.github.io/post/learn/cse575-report/">
+    <a href="https://FlomeWorld.github.io/post/k8s/servicemesh/istio/">
         <h2 class="post-title">
-            REPORT-CSE575: Statistical Machine Learning
+            Istio
         </h2>
 	
         <div class="post-content-preview">
 	
-            Project report for CSE575: Statistical Machine Learning.
-        
+            摘要：从 Sidecar 到 Ambient 的演化逻辑 在过去数年中，Sidecar 模式一直是 Kubernetes 服务网格的事实标准，但其带来的资源开销、复杂的注入机制以及对应用生命周期的强侵入性，始终是大规模运维中的痛点 。Istio 引入的 Ambient Mode（无代理模式） 代表了网格架构的一次范式转移：通过将数据面解耦为轻量级的分层代理（L4 ztunnel 与 L7 Waypoint），在维持强大治理能力的同时，显著降低了运维复杂度与成本 。
+架构选型：Sidecar vs. Ambient 深度对比 Istio 的数据面目前由两种主要的部署模式构成，它们在拦截机制、资源利用率和安全模型上存在本质差异。
+核心差异矩阵 维度 Sidecar 模式 Ambient 模式 部署单元 每个 Pod 注入一个 Envoy 代理 节点级 ztunnel (L4) + 可选 Waypoint (L7) 资源效率 较差；需按各 Pod 峰值预留资源 优秀；Waypoint 可根据负载独立弹性缩放 应用入侵 需重启 Pod 以完成 Sidecar 注入 无需重启；通过命名空间标签即时启用 平均延迟 0.63ms - 0.88ms L4: 0.16ms - 0.20ms; L7: 0.40ms - 0.50ms 安全模型 隔离性最高；每个负载拥有独立私钥 节点级代理持有该节点所有负载的证书 L7 处理步长 2 跳（源 Sidecar + 目标 Sidecar） 1 跳（仅在目标端 Waypoint 处理） 深度解析：Ambient 模式的分层治理 Ambient 模式的精髓在于分层（Layering）。它将传统 Sidecar 的全量功能拆分为两个独立组件，从而实现了 L4 和 L7 的解耦 。
+
+       
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by Harvey on Saturday, April 5, 2025
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://FlomeWorld.github.io/post/learn/cse598-report/">
-        <h2 class="post-title">
-            REPORT-CSE598: Social Media Mining
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Project report for CSE598: Social Media Mining.
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Harvey on Tuesday, November 12, 2024
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://FlomeWorld.github.io/post/learn/cse571-report/">
-        <h2 class="post-title">
-            REPORT-CSE571: Artificial Intelligence
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Project report for CSE571: Artificial Intelligence.
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Harvey on Tuesday, March 5, 2024
+        Posted by Curiosity on Monday, March 20, 2023
         
         
     
@@ -619,7 +576,7 @@
             
            
                    <li>
-                       <a href='/categories/learn/index.xml' rel="alternate" type="application/rss+xml" title="Curiosity" >
+                       <a href='/tags/servicemesh/index.xml' rel="alternate" type="application/rss+xml" title="Curiosity" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
